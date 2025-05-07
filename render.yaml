@@ -4,7 +4,7 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python app.py
-    plan: free
+    plan: หfree
     envVars:
       - key: PORT
         value: 10000

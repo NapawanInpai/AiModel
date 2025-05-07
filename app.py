@@ -10,6 +10,7 @@ import tensorflow as tf
 app = Flask(__name__)
 CORS(app)  # ✅ อนุญาตทุก origin
 
+
 # โหลด TFLite model
 interpreter = tf.lite.Interpreter(model_path="yamodel.tflite")
 interpreter.allocate_tensors()
@@ -64,4 +65,6 @@ def predict():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get('PORT', 5000))  # ✅ ใช้ PORT จาก Render ถ้ามี
+    app.run(host='0.0.0.0', port=port)        # ✅ เปิดให้รับ request จากภายนอก
