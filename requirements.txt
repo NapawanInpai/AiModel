@@ -1,0 +1,5 @@
+flask
+numpy
+opencv-python-headless
+Pillow
+tensorflow  # TFLite อยู่ใน tensorflow>=2.x แล้ว
