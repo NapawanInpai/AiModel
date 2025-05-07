@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # ✅ เพิ่มตรงนี้
 import numpy as np
 import cv2
 import base64
@@ -7,6 +8,7 @@ from PIL import Image
 import tensorflow as tf
 
 app = Flask(__name__)
+CORS(app)  # ✅ อนุญาตทุก origin
 
 # โหลด TFLite model
 interpreter = tf.lite.Interpreter(model_path="yamodel.tflite")
@@ -56,8 +58,9 @@ def predict():
     result = class_names[class_index] if confidence >= 0.7 else "No"
 
     return jsonify({
-        'result': result,
-        'confidence': round(confidence, 2)
+        'class': result,
+        'confidence': round(confidence, 2),
+        'image_base64': data['image']
     })
 
 if __name__ == '__main__':

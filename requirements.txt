@@ -1,6 +1,6 @@
 flask
+flask-cors
 numpy
-opencv-python-headless
-Pillow
-gunicorn
-tensorflow  # TFLite อยู่ใน tensorflow>=2.x แล้ว
+opencv-python
+pillow
+tensorflow
